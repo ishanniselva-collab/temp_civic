@@ -1,0 +1,56 @@
+const jwt = require('jsonwebtoken');
+
+const getJwtSecret = () => process.env.JWT_SECRET || 'dev_jwt_secret_change_me';
+
+/**
+ * Require authentication.
+ * Expects: Authorization: Bearer <token>
+ */
+const authenticate = (req, res, next) => {
+    const authHeader = req.headers.authorization || '';
+    const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+    if (!token) {
+        return res.status(401).json({
+            success: false,
+            error: { message: 'Unauthorized' }
+        });
+    }
+
+    try {
+        const payload = jwt.verify(token, getJwtSecret());
+        req.user = { id: payload.userId, email: payload.email };
+        return next();
+    } catch (err) {
+        return res.status(401).json({
+            success: false,
+            error: { message: 'Unauthorized' }
+        });
+    }
+};
+
+/**
+ * Optional authentication.
+ * If token is provided and valid, req.user will be set.
+ */
+const authenticateOptional = (req, res, next) => {
+    const authHeader = req.headers.authorization || '';
+    const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+    if (!token) {
+        req.user = null;
+        return next();
+    }
+
+    try {
+        const payload = jwt.verify(token, getJwtSecret());
+        req.user = { id: payload.userId, email: payload.email };
+        return next();
+    } catch (err) {
+        req.user = null;
+        return next();
+    }
+};
+
+module.exports = { authenticate, authenticateOptional };
+

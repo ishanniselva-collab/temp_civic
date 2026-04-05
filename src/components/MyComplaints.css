@@ -1,0 +1,110 @@
+.my-complaints {
+  padding: 2.5rem 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.complaints-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .complaints-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.complaint-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+}
+
+.complaint-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.complaint-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.complaint-subtitle {
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-main);
+}
+
+.complaint-desc {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.complaint-image {
+  width: calc(100% + 2.5rem);
+  margin: -1.25rem -1.25rem 1rem -1.25rem;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.complaint-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.status-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.875rem;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.in-progress {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-badge.resolved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.meta-item {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.error-banner {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+
