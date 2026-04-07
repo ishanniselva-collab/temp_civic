@@ -1,0 +1,68 @@
+.voice-guide-widget {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: min(360px, calc(100vw - 32px));
+    background: #ffffff;
+    border: 1px solid #d8e2f3;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 14px;
+    z-index: 3000;
+}
+
+.voice-guide-widget h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.guide-step-text {
+    margin: 0 0 12px;
+    color: #4a5568;
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.guide-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.guide-highlight {
+    position: relative;
+    z-index: 3100 !important;
+    outline: 4px solid #2563eb !important;
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.4) !important;
+    border-radius: 8px;
+    transition: outline 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-pointer {
+    position: absolute;
+    z-index: 4000;
+    pointer-events: none;
+    transform: translateY(-50%) rotate(90deg);
+    animation: guideFloat 1.2s infinite ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.pointer-text {
+    background: #2563eb;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transform: rotate(-90deg);
+    margin-top: 4px;
+}
+
+@keyframes guideFloat {
+    0%, 100% { transform: translateY(-50%) rotate(90deg) translateX(0); }
+    50% { transform: translateY(-50%) rotate(90deg) translateX(-15px); }
+}
